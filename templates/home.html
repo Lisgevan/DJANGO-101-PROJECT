@@ -6,11 +6,16 @@
 {% endblock title %}
 
 {% block body %}
+    <a href="{% url 'feed:post' %}">Add a new post</a>
+    <hr>
+
     {% for post in posts %}
-        {{ post}} <br>
-        {% thumbnail post.image "200x200" crop="center" as im %}
-            <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
-        {% endthumbnail %}
+        <a href="{% url 'feed:detail' post.id %}">
+            {{ post}} <br>
+            {% thumbnail post.image "200x200" crop="center" as im %}
+                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}">
+            {% endthumbnail %}
+        </a>
         <hr>
     {% endfor %}
 {% endblock body %}
